@@ -82,3 +82,11 @@ Route.post('/rating/delete/:id','RatingController.deleteById')
 
 //exclui todas as avaliações
 Route.post('/rating/delete/all','RatingController.deleteAll')
+
+//
+//rota para o serviço Kahn
+//
+
+Route.post('/kahn', 'KahnController.sort')
+
+
