@@ -51,9 +51,4 @@ class RatingController {
 
 }
 
-
-
-
-}
-
 module.exports = RatingController
