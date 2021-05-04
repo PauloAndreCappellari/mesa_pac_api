@@ -1,5 +1,7 @@
 'use strict'
 
+const Database = use('Database')
+
 class RatingController {
 
     async listAll ({ request, response }) {
