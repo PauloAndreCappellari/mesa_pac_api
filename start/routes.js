@@ -90,3 +90,8 @@ Route.post('/rating/delete/all','RatingController.deleteAll')
 Route.post('/kahn', 'KahnController.sort')
 
 
+//
+//rota para o serviço Haversine
+//
+
+Route.post('/haversine', 'HaversineController.sort')
