@@ -57,3 +57,28 @@ Route.post('/places/delete/all', 'PlaceController.deleteAll').middleware('auth')
 //exclui um local por id
 Route.post('/places/delete/:id','PlaceController.deleteById').middleware('auth')
 
+
+//
+//rotas para os serviços de Avaliação (ratings)
+//
+
+//lista todas as avaliações cadastradas
+Route.get('/rating', 'RatingController.listAll')
+
+//lista todas as avaliações cadastradas pelo usuário logado
+Route.get('/rating/user/:user_id', 'RatingController.listByUser')
+
+//lista uma avaliação cadastrada por id
+Route.get('/rating/:id', 'RatingController.listById')
+
+//lista todas as avaliações cadastradas para um local especifico
+Route.get('/rating/place/:place_id', 'RatingController.listByPlace')
+
+//insere nova avaliação
+Route.post('/rating/new','RatingController.insert')
+
+//exclui uma avaliação por id
+Route.post('/rating/delete/:id','RatingController.deleteById')
+
+//exclui todas as avaliações
+Route.post('/rating/delete/all','RatingController.deleteAll')
