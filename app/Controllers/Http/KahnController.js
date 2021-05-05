@@ -3,7 +3,6 @@
 class KahnController {
 
     async sort ({ request, response, view }) {
-        console.log('KahnController.sort()')
 
         const grafo = JSON.parse(request.input('graph'));
         

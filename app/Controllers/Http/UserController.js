@@ -19,7 +19,6 @@ class UserController {
     }
 
     async new ({auth, request, response }) {
-        console.log('UserController.new')
         return await Database.table('users').insert({
             'username': request.input('username'),
             'email': request.input('email'),
@@ -27,16 +26,11 @@ class UserController {
             'lat': request.input('lat'),
             'lng': request.input('lng'),
         })
-
     }
 
     async logout ({auth, request, response }) {
-      console.log('UserController.logout')
       return await auth.logout()
   }
-
-
-
 }
 
 module.exports = UserController
