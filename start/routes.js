@@ -35,6 +35,8 @@ Route
 .get('logout', 'UserController.logout')
 .middleware('auth')
 
+Route.post('/user/new', 'UserController.new')
+
 
 //
 //rotas para os serviços de Locais (places)
