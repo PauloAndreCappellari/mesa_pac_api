@@ -20,6 +20,9 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
+//
+//rotas para os serviços de usuário e autenticação
+//
 
 Route
 .post('login', 'UserController.login')
@@ -37,6 +40,9 @@ Route
 
 Route
 .post('/user/new', 'UserController.new')
+
+Route
+.post('/user/update', 'UserController.update')
 
 
 //

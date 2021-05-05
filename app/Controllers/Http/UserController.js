@@ -30,7 +30,15 @@ class UserController {
 
     async logout ({auth, request, response }) {
       return await auth.logout()
-  }
+    }
+
+    async update ({auth, request, response }) {
+        console.log('UserController.update')
+        return await Database.table('users').update({
+          'email': request.input('email'),
+          'password': await Hash.make(request.input('password'))
+        }).where('user_id', auth.user.id)
+    }
 }
 
 module.exports = UserController
