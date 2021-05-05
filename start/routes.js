@@ -31,6 +31,12 @@ Route
 .get('users/:id', 'UserController.show')
 .middleware('auth')
 
+Route
+.get('logout', 'UserController.logout')
+.middleware('auth')
+
+Route.post('/user/new', 'UserController.new')
+
 
 //
 //rotas para os serviços de Locais (places)
@@ -57,3 +63,41 @@ Route.post('/places/delete/all', 'PlaceController.deleteAll').middleware('auth')
 //exclui um local por id
 Route.post('/places/delete/:id','PlaceController.deleteById').middleware('auth')
 
+
+//
+//rotas para os serviços de Avaliação (ratings)
+//
+
+//lista todas as avaliações cadastradas
+Route.get('/rating', 'RatingController.listAll').middleware('auth')
+
+//lista todas as avaliações cadastradas pelo usuário logado
+Route.get('/rating/user/:user_id', 'RatingController.listByUser').middleware('auth')
+
+//lista uma avaliação cadastrada por id
+Route.get('/rating/:id', 'RatingController.listById').middleware('auth')
+
+//lista todas as avaliações cadastradas para um local especifico
+Route.get('/rating/place/:place_id', 'RatingController.listByPlace').middleware('auth')
+
+//insere nova avaliação
+Route.post('/rating/new','RatingController.insert').middleware('auth')
+
+//exclui uma avaliação por id
+Route.post('/rating/delete/:id','RatingController.deleteById').middleware('auth')
+
+//exclui todas as avaliações
+Route.post('/rating/delete/all','RatingController.deleteAll').middleware('auth')
+
+//
+//rota para o serviço Kahn
+//
+
+Route.post('/kahn', 'KahnController.sort').middleware('auth')
+
+
+//
+//rota para o serviço Haversine
+//
+
+Route.post('/haversine', 'HaversineController.sort').middleware('auth')

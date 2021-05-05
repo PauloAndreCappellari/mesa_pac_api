@@ -1,12 +1,13 @@
 'use strict'
 const Database = use('Database')
+
 class PlaceController {
 
     async listAll ({ request, response, view }) {
         console.log('PlaceController.listAll')
-        let data =  await Database.table('places')
         
-        return view.render('places', {places: data})
+        
+        return await Database.table('places')
     }
 
     async listByUser ({ request, response, params }) {
