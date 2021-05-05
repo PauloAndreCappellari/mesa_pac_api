@@ -1,28 +1,27 @@
 'use strict'
 const Database = use('Database')
+const { route } = require("@adonisjs/framework/src/Route/Manager")
+const Request = use('request');
+
+var haversine = use('./HaversineController');
+
 class PlaceController {
 
     async listAll ({ request, response, view }) {
         console.log('PlaceController.listAll')
-        let data =  await Database.table('places')
         
-        return view.render('places', {places: data})
+        
+        return await Database.table('places').orderBy('name', 'asc')
     }
 
     async listByUser ({ request, response, params }) {
-        console.log('PlaceController.list_by_user')
-        return await Database.table('places').where('user_id', params.user_id)
+        console.log('PlaceController.listByUser')
+        return await Database.table('places').where('user_id', params.user_id).orderBy('name', 'asc')
         
     }
 
     async listById ({ request, response, params }) {
-        console.log('PlaceController.list_by_user')
-        return await Database.table('places').where('id', params.id)
-        
-    }
-
-    async sort ({ request, response, params }) {
-        console.log('PlaceController.list_by_user')
+        console.log('PlaceController.listById')
         return await Database.table('places').where('id', params.id)
         
     }

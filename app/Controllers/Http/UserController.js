@@ -1,23 +1,14 @@
 'use strict'
 
+const { route } = require("@adonisjs/framework/src/Route/Manager")
+
+const Database = use('Database')
+const Hash = use('Hash')
+
 class UserController {
     async login ({ auth, request, response }) {
-        console.log('entrou..')
         const { email, password } = request.all()
         return await auth.attempt(email, password)
-        /*
-        console.log('antes do try')
-        
-        try {
-            await auth.check()
-          } catch (error) {
-            console.log('caiu no catch...')
-            esponse.redirect('welcome')
-          }
-          console.log('depois do try...')
-        
-        return response.redirect('/')
-          */
     }
 
     show ({ auth, params }) {
@@ -29,14 +20,20 @@ class UserController {
 
     async new ({auth, request, response }) {
         console.log('UserController.new')
-        await Database.table('users').insert({
+        return await Database.table('users').insert({
             'username': request.input('username'),
             'email': request.input('email'),
-            'password': await Hash.make(request.input('password'))
+            'password': await Hash.make(request.input('password')),
+            'lat': request.input('lat'),
+            'lng': request.input('lng'),
         })
-        await auth.attempt(request.input('email'), request.input('password'))
-        return response.redirect('/')
+
     }
+
+    async logout ({auth, request, response }) {
+      console.log('UserController.logout')
+      return await auth.logout()
+  }
 
 
 
