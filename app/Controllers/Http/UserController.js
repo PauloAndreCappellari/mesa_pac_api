@@ -38,6 +38,11 @@ class UserController {
         return response.redirect('/')
     }
 
+    async logout ({auth, request, response }) {
+      console.log('UserController.logout')
+      return await auth.logout()
+  }
+
 
 
 }
