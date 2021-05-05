@@ -101,3 +101,9 @@ Route.post('/kahn', 'KahnController.sort').middleware('auth')
 //
 
 Route.post('/haversine', 'HaversineController.sort').middleware('auth')
+
+//
+//rota para o serviço Dijkstra
+//
+
+Route.post('/dijkstra', 'DijkstraController.find').middleware('auth')
