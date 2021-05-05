@@ -35,22 +35,24 @@ Route
 .get('logout', 'UserController.logout')
 .middleware('auth')
 
+Route.post('/user/new', 'UserController.new')
+
 
 //
 //rotas para os serviços de Locais (places)
 //
 
-//lista todos os locais cadastrados
+//lista todos os locais cadastrados, por ordem alfabetica de nome
 Route.get('/places', 'PlaceController.listAll').middleware('auth')
 
-//lista todos os locais cadastrados pelo usuário logado
+//lista todos os locais cadastrados pelo usuário logado, por ordem alfabetica de nome
 Route.get('/places/user/:user_id', 'PlaceController.listByUser').middleware('auth')
 
 //lista um local cadastrado por id
 Route.get('/places/:id', 'PlaceController.listById').middleware('auth')
 
-//ordena a lista de locais
-Route.get('/places/sort', 'PlaceController.sort').middleware('auth')
+//ordena a lista de locais por proximidade
+Route.post('/places/sort', 'HaversineController.sort').middleware('auth')
 
 //insere novo local
 Route.post('/places/new','PlaceController.insert').middleware('auth')
